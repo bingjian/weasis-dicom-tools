@@ -52,8 +52,8 @@ public class CGetForwardNetTest {
 
         DicomNode calling = new DicomNode("WEASIS-SCU");
         DicomNode called = new DicomNode("RCVSCP", "18.10.0.200", 104);
-        DicomNode destination = new DicomNode("STORESCP", "localhost", 11112);
-        String studyUID = "1.2.826.0.1.3680043.2.1505.11.10.20200706082332.1376242";
+        DicomNode destination = new DicomNode("ORTHANC", "localhost", 4242);
+        String studyUID = "1376242";
 
         Attributes attrs = new Attributes();
 //        attrs.setString(Tag.PatientName, VR.PN, "Override^Patient^Name");
@@ -63,7 +63,7 @@ public class CGetForwardNetTest {
 //        DicomState state =
 //            CGetForward.processStudy(params, params, calling, called, destination, progress, studyUID, editor);
         DicomState state =
-                CGetForward.processStudy(params, params, calling, called, destination, progress, studyUID, editor);
+                CGetForward.processAccessionNumber(params, params, calling, called, destination, progress, studyUID, editor);
         // Should never happen
         Assert.assertNotNull(state);
 

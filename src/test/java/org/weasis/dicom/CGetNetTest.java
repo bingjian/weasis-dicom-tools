@@ -48,9 +48,9 @@ public class CGetNetTest {
          * The following parameters must be changed to get a successful test.
          */
 
-        DicomParam[] params = { new DicomParam(Tag.AccessionNumber, "1376242") };
+        DicomParam[] params = { new DicomParam(Tag.StudyInstanceUID, "1.2.840.113619.2.289.3.17457409.239.1582349017.807")};
         DicomNode calling = new DicomNode("WEASIS-SCU");
-        DicomNode called = new DicomNode("RCVSCP", "18.10.0.200", 104);
+        DicomNode called = new DicomNode("DCMQRSCP", "127.0.0.1", 11112);
 
 //        DicomState state = CGet.process(calling, called, progress, testFolder.newFolder("c-get"), params);
         DicomState state = CGet.process(calling, called, progress, new File("D://MR"), params);

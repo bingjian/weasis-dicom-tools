@@ -30,10 +30,10 @@ public class CFindNetTest {
     public void testProcess() {
         BasicConfigurator.configure();
         
-        DicomParam[] params = { new DicomParam(Tag.AccessionNumber, "1376242"), new DicomParam(Tag.StudyInstanceUID),
+        DicomParam[] params = { new DicomParam(Tag.PatientID, "ModifiedPatientID"), new DicomParam(Tag.StudyInstanceUID),
             new DicomParam(Tag.NumberOfStudyRelatedSeries) };
         DicomNode calling = new DicomNode("WEASIS-SCU");
-        DicomNode called = new DicomNode("RCVSCP", "18.10.0.200", 104);
+        DicomNode called = new DicomNode("DCMQRSCP", "127.0.0.1", 11112);
         DicomState state = CFind.process(calling, called, params);
         // Should never happen
         Assert.assertNotNull(state);
