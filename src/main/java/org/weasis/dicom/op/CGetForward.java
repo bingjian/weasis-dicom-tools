@@ -437,6 +437,13 @@ public class CGetForward implements AutoCloseable {
             attributesEditor);
     }
 
+    public static DicomState processAccessionNumber(AdvancedParams getParams, AdvancedParams forwardParams, DicomNode callingNode,
+                                          DicomNode calledNode, DicomNode destinationNode, DicomProgress progress, String studyUID,
+                                          AttributeEditor attributesEditor) {
+        return process(getParams, forwardParams, callingNode, calledNode, destinationNode, progress, "AccessionNumber", studyUID,
+                attributesEditor);
+    }
+
     /**
      * @param callingNode
      *            the calling DICOM node configuration
@@ -532,7 +539,7 @@ public class CGetForward implements AutoCloseable {
             forward.setPriority(options.getPriority());
 
             forward.setInformationModel(getInformationModel(options), options.getTsuidOrder(),
-                options.getQueryOptions().contains(QueryOption.RELATIONAL));
+                    options.getQueryOptions().contains(QueryOption.RELATIONAL));
 
             configureRelatedSOPClass(forward, null);
 
@@ -542,6 +549,9 @@ public class CGetForward implements AutoCloseable {
             } else if ("STUDY".equals(queryRetrieveLevel)) {
                 forward.addKey(Tag.QueryRetrieveLevel, "STUDY");
                 forward.addKey(Tag.StudyInstanceUID, queryUID);
+            } else if("AccessionNumber".equals(queryRetrieveLevel)){
+                forward.addKey(Tag.QueryRetrieveLevel, "STUDY");
+                forward.addKey(Tag.AccessionNumber, queryUID);
             } else {
                 throw new IllegalArgumentException(queryRetrieveLevel + " is not supported as query retrieve level!");
             }

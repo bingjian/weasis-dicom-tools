@@ -239,47 +239,11 @@
 		</dependency>
 		<!-- End of dcm4che-imageio packages -->
 
-<!--		<dependency>-->
-<!--			<groupId>org.dcm4che.tool</groupId>-->
-<!--			<artifactId>dcm4che-tool-getscu</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.dcm4che.tool</groupId>-->
-<!--			<artifactId>dcm4che-tool-findscu</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.dcm4che.tool</groupId>-->
-<!--			<artifactId>dcm4che-tool-storescu</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.dcm4che.tool</groupId>-->
-<!--			<artifactId>dcm4che-tool-storescp</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.dcm4che.tool</groupId>-->
-<!--			<artifactId>dcm4che-tool-movescu</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.dcm4che.tool</groupId>
 			<artifactId>dcm4che-tool-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
-<!--		<dependency>-->
-<!--			<groupId>org.dcm4che.tool</groupId>-->
-<!--			<artifactId>dcm4che-tool-dcm2dcm</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--		</dependency>-->
 
 		<dependency>
 			<groupId>commons-cli</groupId>
