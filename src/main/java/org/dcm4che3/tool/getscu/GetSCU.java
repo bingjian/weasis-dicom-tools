@@ -186,16 +186,16 @@ public class GetSCU implements AutoCloseable {
     public static void storeTo(Association as, Attributes fmi, PDVInputStream data, File file) throws IOException {
         LOGGER.debug("{}: M-WRITE {}", as, file);
         file.getParentFile().mkdirs();
-//        Dcm2Dcm dcm2Dcm = new Dcm2Dcm();
-//        dcm2Dcm.setTransferSyntax(UID.JPEGLossless);
-//        dcm2Dcm.transcodeWithTranscoder(data, file);
-        DicomOutputStream out = new DicomOutputStream(file);
-        try {
-            out.writeFileMetaInformation(fmi);
-            data.copyTo(out);
-        } finally {
-            SafeClose.close(out);
-        }
+        Dcm2Dcm dcm2Dcm = new Dcm2Dcm();
+        dcm2Dcm.setTransferSyntax(UID.JPEGLossless);
+        dcm2Dcm.transcodeWithTranscoder(data, file);
+//        DicomOutputStream out = new DicomOutputStream(file);
+//        try {
+//            out.writeFileMetaInformation(fmi);
+//            data.copyTo(out);
+//        } finally {
+//            SafeClose.close(out);
+//        }
     }
 
     private static void renameTo(Association as, File from, File dest) throws IOException {
