@@ -200,6 +200,9 @@ public class GetSCU implements AutoCloseable {
 
     private static void renameTo(Association as, File from, File dest) throws IOException {
         LOGGER.info("{}: M-RENAME {} to {}", as, from, dest);
+        if(dest.exists()){
+            dest.delete();
+        }
         FileUtil.prepareToWriteFile(dest);
         if (!from.renameTo(dest))
             throw new IOException("Failed to rename " + from + " to " + dest);
