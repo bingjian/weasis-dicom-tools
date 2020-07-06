@@ -65,6 +65,7 @@ import org.dcm4che3.net.pdu.RoleSelection;
 import org.dcm4che3.net.service.BasicCStoreSCP;
 import org.dcm4che3.net.service.DicomServiceException;
 import org.dcm4che3.net.service.DicomServiceRegistry;
+import org.dcm4che3.tool.dcm2dcm.Dcm2Dcm;
 import org.dcm4che3.util.SafeClose;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -136,7 +137,7 @@ public class GetSCU implements AutoCloseable {
             File file = new File(storageDir, TMP_DIR + File.separator + iuid);
             try {
                 storeTo(as, as.createFileMetaInformation(iuid, cuid, tsuid), data, file);
-                renameTo(as, file, new File(storageDir, iuid));
+                renameTo(as, file, new File(storageDir, iuid + ".dcm"));
             } catch (Exception e) {
                 throw new DicomServiceException(Status.ProcessingFailure, e);
             }
@@ -185,6 +186,9 @@ public class GetSCU implements AutoCloseable {
     public static void storeTo(Association as, Attributes fmi, PDVInputStream data, File file) throws IOException {
         LOGGER.debug("{}: M-WRITE {}", as, file);
         file.getParentFile().mkdirs();
+//        Dcm2Dcm dcm2Dcm = new Dcm2Dcm();
+//        dcm2Dcm.setTransferSyntax(UID.JPEGLossless);
+//        dcm2Dcm.transcodeWithTranscoder(data, file);
         DicomOutputStream out = new DicomOutputStream(file);
         try {
             out.writeFileMetaInformation(fmi);

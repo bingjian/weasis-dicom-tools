@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.weasis.dicom;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.log4j.BasicConfigurator;
@@ -47,11 +48,12 @@ public class CGetNetTest {
          * The following parameters must be changed to get a successful test.
          */
 
-        DicomParam[] params = { new DicomParam(Tag.StudyInstanceUID, "1.2.826.0.1.3680043.11.111") };
+        DicomParam[] params = { new DicomParam(Tag.AccessionNumber, "1376242") };
         DicomNode calling = new DicomNode("WEASIS-SCU");
-        DicomNode called = new DicomNode("DICOMSERVER", "dicomserver.co.uk", 11112);
+        DicomNode called = new DicomNode("RCVSCP", "18.10.0.200", 104);
 
-        DicomState state = CGet.process(calling, called, progress, testFolder.newFolder("c-get"), params);
+//        DicomState state = CGet.process(calling, called, progress, testFolder.newFolder("c-get"), params);
+        DicomState state = CGet.process(calling, called, progress, new File("D://MR"), params);
 
         // Should never happen
         Assert.assertNotNull(state);

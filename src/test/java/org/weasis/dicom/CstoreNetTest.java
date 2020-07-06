@@ -54,7 +54,7 @@ public class CstoreNetTest {
         });
 
         DicomNode calling = new DicomNode("WEASIS-SCU");
-        DicomNode called = new DicomNode("DICOMSERVER", "dicomserver.co.uk", 11112);
+        DicomNode called = new DicomNode("STORESCP", "127.0.0.1", 11112);
         // DicomNode called = new DicomNode("DCM4CHEE", "localhost", 11112);
         List<String> files = new ArrayList<>();
         try {
@@ -66,7 +66,7 @@ public class CstoreNetTest {
         Attributes attrs = new Attributes();
         attrs.setString(Tag.PatientName, VR.PN, "Override^Patient^Name");
         attrs.setString(Tag.PatientID, VR.LO, "ModifiedPatientID");
-        DefaultAttributeEditor editor = new DefaultAttributeEditor(true, attrs);
+        DefaultAttributeEditor editor = new DefaultAttributeEditor(false, attrs);
         CstoreParams  cstoreParams = new CstoreParams(editor, false, null);
 
         DicomState state = CStore.process(params, calling, called, files, progress, cstoreParams);

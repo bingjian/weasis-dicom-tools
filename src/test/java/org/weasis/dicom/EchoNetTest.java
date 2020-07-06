@@ -36,7 +36,7 @@ public class EchoNetTest {
         // DicomState state = Echo.process(params, calling, called);
 
         DicomNode calling = new DicomNode("WEASIS-SCU");
-        DicomNode called = new DicomNode("DICOMSERVER", "dicomserver.co.uk", 11112);
+        DicomNode called = new DicomNode("ORTHANC", "127.0.0.1", 4242);
         DicomState state = Echo.process(null, calling, called);
         // Should never happen
         Assert.assertNotNull(state);

@@ -52,7 +52,7 @@ public class CMoveNetTest {
         // DicomParam[] params = { new DicomParam(Tag.QueryRetrieveLevel, "IMAGE"),
         // new DicomParam(Tag.SOPInstanceUID, "1.2.840.113543.6.6.3.4.637463244096141531813342472862196132286") };
         DicomNode calling = new DicomNode("WEASIS-SCU");
-        DicomNode called = new DicomNode("DCM4CHEE", "localhost", 11112);
+        DicomNode called = new DicomNode("ORTHANC", "127.0.0.1", 4242);
         AdvancedParams options = new AdvancedParams();
         options.getQueryOptions().add(QueryOption.RELATIONAL); // Required for QueryRetrieveLevel other than study
         DicomState state = CMove.process(options, calling, called, "WEASIS-SCU", progress, params);
